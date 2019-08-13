@@ -63,6 +63,13 @@
  * }
  */
 
+const yelling = array => {
+  let newArray = []
+  array.map(word => {
+    newArray.push(word.toUpperCase())
+  })
+  return newArray
+}
 // ...
 
 /**
@@ -72,6 +79,13 @@
  * the numbers multiplied by 2
  */
 
+const doubleTrouble = array => {
+  let newArray = []
+  array.map(num => {
+    newArray.push(num * 2)
+  })
+  return newArray
+}
 // ...
 
 /*
@@ -80,6 +94,18 @@
  * suffixed with " is at index X" where X is the index of the element
  */
 
+const stringyIndexes = array => {
+  let newArray = array.map((item, i) => {
+    return `${item} is at index ${i}`
+  })
+  // use MAP then talk to mark
+  // let newArray = []
+  // for (let i = 0; i < array.length; i++) {
+  //   const text = array[i]
+  //   newArray.push(`${text} is at index ${i}`)
+  // }
+  return newArray
+}
 // ...
 
 /*
@@ -87,6 +113,10 @@
  * numbers and returns only the elements that are even
  */
 
+const onlyTheEvenSurvive = array => {
+  const newArray = array.filter(num => num % 2 === 0)
+  return newArray
+}
 // ...
 
 /*
@@ -94,6 +124,18 @@
  * numbers and returns only the elements at indexes that are even
  */
 
+const onlyTheEvenIndexedSurvive = array => {
+  let newArray = array.filter((item, i) => {
+    return i % 2 === 0
+  })
+  // let newArray = []
+  // for (let i = 0; i < array.length; i++) {
+  //   if (i % 2 === 0) {
+  //     newArray.push(array[i])
+  //   }
+  // }
+  return newArray
+}
 // ...
 
 /*
@@ -110,6 +152,16 @@
  * }
  */
 
+const bestMoviesOfTheYear = (movies, year) => {
+  const bestPics = movies
+    .filter(movie => {
+      return movie.score > 90 && movie.year === year
+    })
+    .map(movie => {
+      return movie.name
+    })
+  return bestPics
+}
 // ...
 
 /*
@@ -118,6 +170,19 @@
  * odd.
  */
 
+const everyoneIsOdd = array => {
+  // for each item in array, see if it is odd
+  // if they are all odd, return true
+  // use filter to remove even values, then check the .length of both arrays
+  const newArray = array.filter(num => {
+    return num % 2 !== 0
+  })
+  if (array.length === newArray.length) {
+    return true
+  } else {
+    return false
+  }
+}
 // ...
 
 /*
@@ -126,6 +191,12 @@
  * `needle` inside
  */
 
+const findTheNeedle = array => {
+  const needle = array.filter(item => {
+    return item.toLowerCase().includes('needle')
+  })
+  return needle[0]
+}
 // ...
 
 /*
@@ -134,6 +205,13 @@
  *  the word `needle` inside
  */
 
+const findTheNeedleIndex = array => {
+  const needle = array.filter(item => {
+    return item.toLowerCase().includes('needle')
+  })
+  const needleIndex = array.indexOf(needle[0])
+  return needleIndex
+}
 // ...
 
 /*
@@ -142,6 +220,15 @@
  * four characters long
  */
 
+const someoneToLove = array => {
+  let checker = false
+  array.forEach(string => {
+    if (string.length === 4) {
+      checker = true
+    }
+  })
+  return checker
+}
 // ...
 
 /*
@@ -153,6 +240,15 @@
  * So no using forEach, map, filter, reduce, etc.
  */
 
+const mapYourself = array => {
+  let newArray = []
+  for (let i = 0; i < array.length; i++) {
+    let newElement = array[i]
+    newElement = newElement * 2
+    newArray.push(newElement)
+  }
+  return newArray
+}
 // ...
 
 /*
@@ -165,6 +261,15 @@
  * So no using forEach, map, filter, reduce, etc.
  */
 
+const filterYourself = array => {
+  let newArray = []
+  for (let i = 0; i < array.length; i++) {
+    if (i % 2 === 0) {
+      newArray.push(array[i])
+    }
+  }
+  return newArray
+}
 // ...
 
 /*
@@ -177,6 +282,15 @@
  * So no using forEach, map, filter, reduce, etc.
  */
 
+const everyYourself = array => {
+  let returnValue = true
+  for (let i = 0; i < array.length; i++) {
+    if (array[i] % 2 !== 0) {
+      returnValue = false
+    }
+  }
+  return returnValue
+}
 // ...
 
 /**
@@ -189,7 +303,9 @@ import test from 'ava'
 
 const ensureDefined = (t, method) => {
   if (eval(`typeof ${method}`) !== 'function') {
-    t.fail(`\n\n\n\n\n⚡️⚡️⚡️⚡️⚡️ The next step is to define the function ${method} ⚡️⚡️⚡️⚡️⚡️\n\n\n`)
+    t.fail(
+      `\n\n\n\n\n⚡️⚡️⚡️⚡️⚡️ The next step is to define the function ${method} ⚡️⚡️⚡️⚡️⚡️\n\n\n`
+    )
   }
 }
 
